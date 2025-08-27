@@ -156,21 +156,62 @@ import pickle
 
 # ------------------------------------------------------------------------
 # store multiple student data
-students = []   # list to hold multiple student dictionaries
+# students = []   # list to hold multiple student dictionaries
 
-n = int(input("How many students? "))
+# n = int(input("How many students? "))
 
-for i in range(n):
-    print(f"\nEnter details of student {i+1}:")
-    student = {}
-    student["id"] = int(input("Enter Student ID: "))
-    student["name"] = input("Enter Student Name: ")
-    student["course"] = input("Enter Course: ")
-    student["CGPA"] = float(input("Enter CGPA: "))
-    students.append(student)
+# for i in range(n):
+#     print(f"\nEnter details of student {i+1}:")
+#     student = {}
+#     student["id"] = int(input("Enter Student ID: "))
+#     student["name"] = input("Enter Student Name: ")
+#     student["course"] = input("Enter Course: ")
+#     student["CGPA"] = float(input("Enter CGPA: "))
+#     students.append(student)
 
-print("\nAll Students Data:")
-for stu in students:
-    print(stu)
-    
+# print("\nAll Students Data:")
+# for stu in students:
+#     print(stu)
+# ---------------------------------------------------------------------
+# Now I write how to multiple data store as a list of dictionary 
+
+import shutil
+import os
+
+# Greeting line
+Greetings = shutil.get_terminal_size().columns
+print("Good Morning Friends".center(Greetings, "*"))
+print("Employee Details!")
+
+Total_Employee = []
+
+if os.path.exists("Results/Employee.json"):
+    with open("Results/Employee.json", "r") as file:
+        try:
+            Total_Employee = json.load(file)
+        except json.JSONDecodeError:
+            Total_Employee = []   
+
+Number_of_Employee = int(input("Enter how many employee data you want to add now? "))
+
+for i in range(Number_of_Employee):
+    print(f"\nNow enter Employee {i+1} details:")
+    Employee = {}
+    Employee["Name"] = input("Enter Employee Name: ")
+    Employee["ID"] = int(input(f"Enter Emp.{Employee['Name']} ID: "))
+    Employee["Age"] = int(input(f"Enter Emp.{Employee['Name']} Age: "))
+    Employee["PhNo"] = input(f"Enter Emp.{Employee['Name']} Phone number: ")  # string
+    Total_Employee.append(Employee)
+
+# Display all data
+print("\nDisplay All Data")
+for index, emp in enumerate(Total_Employee, start=1):
+    print(index, ":", json.dumps(emp, indent=4))
+
+# Save JSON file 
+with open("Results/Employee.json", "w") as file:
+    json.dump(Total_Employee, file, indent=4)
+
+# -----------------------------------------------------------------------------
+
 
