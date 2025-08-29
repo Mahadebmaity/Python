@@ -212,6 +212,6 @@ for index, emp in enumerate(Total_Employee, start=1):
 with open("Results/Employee.json", "w") as file:
     json.dump(Total_Employee, file, indent=4)
 
-# -----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 
