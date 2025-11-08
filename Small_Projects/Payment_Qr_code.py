@@ -14,9 +14,9 @@ paytm_Qr = qrcode.make(paytm)
 google_pay_Qr = qrcode.make(google_pay_url)
 
 # Save Qr code
-phonepe_Qr.save('phonepe_Qr.png')
-paytm_Qr.save('paytm_Qr.png')
-google_pay_Qr.save('google_pay_Qr.png')
+phonepe_Qr.save('photos/phonepe_Qr.png')
+paytm_Qr.save('photos/paytm_Qr.png')
+google_pay_Qr.save('photos/google_pay_Qr.png')
 
 # Display the Qr code 
 phonepe_Qr.show()
